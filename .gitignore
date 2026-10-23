@@ -1,0 +1,10 @@
+## Visual Studio / .NET Framework build output
+bin/
+obj/
+packages/
+*.user
+*.suo
+.vs/
+*.cache
+*.log
+TestResults/

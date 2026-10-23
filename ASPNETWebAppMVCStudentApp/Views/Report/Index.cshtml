@@ -1,0 +1,21 @@
+@model ASPNETWebAppMVCStudentApp.Models.CourseViewModel
+@{
+    ViewBag.Title = "Student Report";
+}
+
+<h2>Student Report</h2>
+
+@using (Html.BeginForm("Generate", "Report", FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.SelectedCourseID, "Select Course:", new { @class = "control-label" })
+        @Html.DropDownListFor(m => m.SelectedCourseID, Model.Courses, "-- Select a course --", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.SelectedCourseID, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" name="action" value="preview" class="btn btn-primary">Print Preview</button>
+    <button type="submit" name="action" value="export" class="btn btn-default">Export to PDF</button>
+}
